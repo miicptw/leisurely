@@ -2,14 +2,14 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
     <meta name="description" content="臺灣商務印書館重磅出版《悠閒頌》。諾貝爾文學獎得主羅素回應當代生活困境，帶你檢測過勞指數，捍衛精神自由！">
     <meta name="keywords" content="悠閒頌, 伯特蘭・羅素, 臺灣商務印書館, 心理測驗, 現代焦慮, 哲學隨筆, 工作焦慮, 工作壓力, 悠閒放鬆">
     <meta name="geo.region" content="TW-NWT">
     <meta name="geo.placename" content="Xindian District">
     
-    <meta property="og:title" content="新書上市《悠閒頌》幸福的哲學大師-羅素 | 臺灣商務印書館">
+    <meta property="og:title" content="新書上市 《悠閒頌》最關心世人幸福的哲學大師-羅素 | 臺灣商務印書館">
     <meta property="og:description" content="快來檢測你的過勞指數，捍衛精神自由！">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cptw.com.tw/">
@@ -30,6 +30,7 @@
             --hover-custom: #1e2e8f;
         }
 
+        /* 基礎防跑版設定 */
         html { 
             font-size: 19px; 
             transition: font-size 0.3s ease; 
@@ -102,7 +103,6 @@
             font-size: 0.95rem; text-decoration: none; font-weight: bold; transition: 0.2s; cursor: pointer;
         }
         .nav-btn.outline { border-color: var(--text-sub); color: var(--text-sub); }
-        
         .nav-btn:hover, .nav-btn:focus-visible, 
         .nav-btn.outline:hover, .nav-btn.outline:focus-visible { 
             background: var(--hover-custom); color: #fff; border-color: var(--hover-custom); 
@@ -126,9 +126,7 @@
             .btn-buy-nav { font-size: 1rem; padding: 4px 18px; }
         }
 
-        #stress-test, #game-section, #canvas-container {
-            scroll-margin-top: 130px;
-        }
+        #stress-test, #game-section, #canvas-container { scroll-margin-top: 130px; }
 
         .hero { position: relative; margin-bottom: 60px; z-index: 1; padding-top: 10px; width: 100%; }
         .hero-top { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-bottom: 30px; width: 100%; }
@@ -137,8 +135,7 @@
             border-left: 3px solid var(--accent-green); border-right: 3px solid var(--accent-green);
             border-radius: 15px; padding: 15px 20px; color: var(--accent-blue);
             font-weight: bold; font-size: 1.05rem; min-height: 110px; width: 100%; max-width: 700px;
-            background: rgba(255, 255, 255, 0.85); text-align: center; line-height: 1.8;
-            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.85); text-align: center; line-height: 1.8; margin-top: 25px;
         }
 
         .hero-main { display: grid; grid-template-columns: 1fr; gap: 30px; align-items: center; width: 100%; }
@@ -181,7 +178,6 @@
         
         .section-title { font-size: 1.6rem; color: var(--accent-blue); font-weight: 900; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .section-title::before { content: ""; display: block; width: 6px; height: 1.1em; background: var(--accent-blue); border-radius: 3px; }
-        
         .section-title.title-orange { color: var(--accent-orange); }
         .section-title.title-orange::before { background: var(--accent-orange); }
 
@@ -201,23 +197,22 @@
         .game-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 60px; width: 100%; }
         .game-wrapper {
             position: relative; width: 100%; max-width: 500px; 
-            aspect-ratio: 5 / 7; /
+            aspect-ratio: 5 / 7; 
             background: #fff; border: 3px solid var(--border-color); border-radius: 16px; overflow: hidden;
+            /* 阻止外框也被捲動 */
+            touch-action: none; 
         }
         canvas { 
-            display: block; 
-            width: 100%; 
-            height: 100%; 
-            touch-action: none; 
-            background: #fff; 
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
+            display: block; width: 100%; height: 100%; touch-action: none; background: #fff; 
+            -webkit-touch-callout: none; -webkit-user-select: none;
         }
         
+        /* 2. 修正：設定 overflow-y: auto 避免小螢幕裁切按鈕，並縮小間距 */
         .game-overlay {
             position: absolute; inset: 0; background: rgba(255,255,255,0.95); z-index: 10;
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            padding: 20px; text-align: center; gap: 12px; width: 100%; height: 100%;
+            padding: 15px; text-align: center; gap: 10px; width: 100%; height: 100%;
+            overflow-y: auto;
         }
         .hidden { display: none !important; }
 
@@ -438,21 +433,21 @@
                 
                 <div id="screen-start" class="game-overlay">
                     <h2 style="font-size:1.8rem; color:var(--accent-blue); margin:0;">自由靈魂生存戰</h2>
-                    <p style="color:var(--accent-red); font-weight:bold; font-size:1.1rem; margin:0;">倒數20秒，拒絕過勞！</p>
-                    <div style="background:#f8fafc; padding:15px; border-radius:10px; font-size:0.95rem; text-align:left; color:var(--text-sub); border: 1px solid var(--border-color); margin-top:5px;">
+                    <p style="color:var(--accent-red); font-weight:bold; font-size:1.1rem; margin:0;">倒數 20 秒，拒絕過勞！</p>
+                    <div style="background:#f8fafc; padding:12px; border-radius:10px; font-size:0.95rem; text-align:left; color:var(--text-sub); border: 1px solid var(--border-color); margin-top:5px; width: 100%; max-width: 300px;">
                         💡 <b>機制說明：</b><br>
-                        1. 螢幕任意處【按住滑動】操控藍色光點。<br>
-                        2. 💥 撞到工作：<b style="color:var(--accent-red)">增加過勞時數</b>，滿載即出局。<br>
-                        3. 🪙 吃到金幣：<b style="color:var(--accent-green)">減少過勞時數</b>，延長存活機會。
+                        1. 螢幕任意處【按住滑動】操控藍點。<br>
+                        2. 💥 撞到工作：<b style="color:var(--accent-red)">增加疲勞</b>，滿載出局。<br>
+                        3. 🪙 吃到金幣：<b style="color:var(--accent-green)">減少疲勞</b>，延長存活機會。
                     </div>
                     <button class="btn-game" style="margin-top:10px;" onclick="startGame()">開始捍衛靈魂</button>
                 </div>
 
                 <div id="screen-result" class="game-overlay hidden">
-                    <img id="result-img" src="" alt="結果圖片" style="width:100%; max-width:280px; height:auto; border-radius:10px; margin-bottom: 15px; object-fit: contain; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <img id="result-img" src="" alt="結果圖片" style="width:auto; max-width:240px; max-height:35%; border-radius:10px; margin-bottom: 5px; object-fit: contain; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
                     
-                    <div style="margin-bottom: 15px;">
-                        <h2 id="result-title" style="font-size:1.6rem; margin:0 0 8px 0; line-height: 1.2;"></h2>
+                    <div style="margin-bottom: 10px;">
+                        <h2 id="result-title" style="font-size:1.4rem; margin:0 0 5px 0; line-height: 1.2;"></h2>
                         <p id="result-desc" style="font-size:0.95rem; font-weight:bold; margin:0; color:var(--text-sub);"></p>
                     </div>
                     
@@ -471,7 +466,7 @@
                         </button>
                     </div>
                     
-                    <button class="btn-game" style="background:var(--text-sub); margin-top:20px; padding: 10px 25px;" onclick="startGame()">再次挑戰</button>
+                    <button class="btn-game" style="background:var(--text-sub); margin-top:10px; padding: 10px 25px;" onclick="startGame()">再次挑戰</button>
                 </div>
             </div>
         </section>
@@ -579,18 +574,32 @@
             <img src="images/logo-2.webp" alt="臺灣商務印書館" style="height:40px; margin-bottom:15px;" onerror="this.style.display='none'">
         </a>
         <div class="footer-social">
-            <a href="https://www.facebook.com/ecptw/reels/" target="_blank" rel="noopener noreferrer" aria-label="前往 Facebook 粉絲專頁"><img src="images/facebook.webp" alt="臺灣商務印書館" onerror="this.src='https://cdn-icons-png.flaticon.com/512/124/124010.png'"></a>
-            <a href="https://www.youtube.com/@InBook_1897" target="_blank" rel="noopener noreferrer" aria-label="前往 YouTube 頻道"><img src="images/youtube.webp" alt="有何Book" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1384/1384060.png'"></a>
-            <a href="https://page.line.me/sbe1949f?openQrModal=true" target="_blank" rel="noopener noreferrer" aria-label="加入 LINE 官方帳號"><img src="images/line.webp" alt="臺灣商務印書館" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg'"></a>
-            <a href="https://www.instagram.com/commercial.press.tw" target="_blank" rel="noopener noreferrer" aria-label="前往 Instagram"><img src="images/ig.webp" alt="臺灣商務印書館" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2111/2111463.png'"></a>
-            <a href="https://www.threads.com/@commercial.press.tw" target="_blank" rel="noopener noreferrer" aria-label="前往 Threads"><img src="images/threads.webp" alt="臺灣商務印書館" onerror="this.src='https://seeklogo.com/images/T/threads-logo-E9BA734BF6-seeklogo.com.png?v=638252100950000000'"></a>
+            <a href="https://www.facebook.com/ecptw/reels/" target="_blank" rel="noopener noreferrer" aria-label="前往 Facebook 粉絲專頁"><img src="images/facebook.webp" alt="" onerror="this.src='https://cdn-icons-png.flaticon.com/512/124/124010.png'"></a>
+            <a href="https://www.youtube.com/@InBook_1897" target="_blank" rel="noopener noreferrer" aria-label="前往 YouTube 頻道"><img src="images/youtube.webp" alt="" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1384/1384060.png'"></a>
+            <a href="https://page.line.me/sbe1949f?openQrModal=true" target="_blank" rel="noopener noreferrer" aria-label="加入 LINE 官方帳號"><img src="images/line.webp" alt="" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg'"></a>
+            <a href="https://www.instagram.com/commercial.press.tw" target="_blank" rel="noopener noreferrer" aria-label="前往 Instagram"><img src="images/ig.webp" alt="" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2111/2111463.png'"></a>
+            <a href="https://www.threads.com/@commercial.press.tw" target="_blank" rel="noopener noreferrer" aria-label="前往 Threads"><img src="images/threads.webp" alt="" onerror="this.src='https://seeklogo.com/images/T/threads-logo-E9BA734BF6-seeklogo.com.png?v=638252100950000000'"></a>
         </div>
         <p style="color:var(--text-sub); font-size:0.9rem;">版權所有 © 2026 臺灣商務印書館 Commercial Press (Taiwan). All Rights Reserved.</p>
         <p style="margin-top: 10px; color: var(--accent-blue); font-weight:bold;">「世界越快，心越慢。」</p>
     </footer>
 
     <script>
+        // =======================
+        // 1. 強制阻擋 iOS 雙指縮放與點擊放大
+        // =======================
+        document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+        });
+        document.addEventListener('touchstart', function (e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
 
+        // =======================
+        // UI 特效與測驗邏輯
+        // =======================
         let isTyping = false;
         function typeWriterHTML(elementId, text, speed) {
             const elem = document.getElementById(elementId);
@@ -663,22 +672,24 @@
             let res = document.getElementById('quiz-result');
             res.classList.remove('hidden');
             if(scoreA >= 4){
-                document.getElementById('res-title').innerHTML = "<span style='color:#e11d48'>重度制約的現代邁達斯王</span>";
+                document.getElementById('res-title').innerHTML = "<span style='color:#e11d48'>🚨 重度制約的現代邁達斯王</span>";
                 document.getElementById('res-desc').innerText = "你被金錢與效率徹底控制了生活！連休息都帶著罪惡感。";
                 document.getElementById('res-quote').innerText = "羅素處方箋：現代人把閒暇看作浪費，但閒暇對思考與幸福非常重要。";
             } else if(scoreA >= 2) {
-                document.getElementById('res-title').innerHTML = "<span style='color:#ea580c'>徘徊焦慮邊緣的現代人</span>";
+                document.getElementById('res-title').innerHTML = "<span style='color:#ea580c'>⚖️ 徘徊焦慮邊緣的現代人</span>";
                 document.getElementById('res-desc').innerText = "你卡在理想的悠閒與現實的競爭之間。";
                 document.getElementById('res-quote').innerText = "羅素處方箋：為無用的事物保留空間，找回分寸感。";
             } else {
-                document.getElementById('res-title').innerHTML = "<span style='color:#10b981'>傲視焦慮的悠閒哲學家</span>";
+                document.getElementById('res-title').innerHTML = "<span style='color:#10b981'>🧘‍♂️ 傲視焦慮的悠閒哲學家</span>";
                 document.getElementById('res-desc').innerText = "恭喜你！你懂得享受那些看似「無用」卻能滋養靈魂的事物。";
                 document.getElementById('res-quote').innerText = "羅素處方箋：真正成熟的社會，應該留時間給思考、愛與遊戲。你就是本書的知音！";
             }
             res.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-
+        // =======================
+        // 遊戲與分享邏輯
+        // =======================
         function endGame(isWin) {
             gameState = isWin ? 'WIN' : 'LOSE';
             
@@ -757,7 +768,9 @@
             }
         }
 
-
+        // =======================
+        // Canvas 遊戲渲染核心
+        // =======================
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         let gameState = 'START';
@@ -910,7 +923,6 @@
             const bW=CANVAS_W-60, bH=18, bX=30, bY=15, pr=Math.min(1, overworkLevel/maxOverwork);
             ctx.fillStyle='#e2e8f0'; 
             
-            // 繪製背景底條
             ctx.beginPath();
             ctx.moveTo(bX+8, bY);
             ctx.lineTo(bX+bW-8, bY);
