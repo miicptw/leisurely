@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
+    <!-- SEO & GEO 標記 -->
     <meta name="description" content="臺灣商務印書館重磅出版《悠閒頌》。諾貝爾文學獎得主羅素回應當代生活困境，帶你檢測過勞指數，捍衛精神自由！">
     <meta name="keywords" content="悠閒頌, 伯特蘭・羅素, 臺灣商務印書館, 心理測驗, 現代焦慮, 哲學隨筆, 工作焦慮, 工作壓力, 悠閒放鬆">
     <meta name="geo.region" content="TW-NWT">
     <meta name="geo.placename" content="Xindian District">
     
+    <!-- Open Graph 社群分享標記 -->
     <meta property="og:title" content="新書上市 《悠閒頌》最關心世人幸福的哲學大師-羅素 | 臺灣商務印書館">
     <meta property="og:description" content="快來檢測你的過勞指數，捍衛精神自由！">
     <meta property="og:type" content="website">
@@ -194,20 +196,32 @@
             background: var(--hover-custom) !important; color: #fff !important; border-color: var(--hover-custom) !important; 
         }
 
+        /* --- 遊戲區 CSS 徹底修正 --- */
         .game-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 60px; width: 100%; }
+        
         .game-wrapper {
-            position: relative; width: 100%; max-width: 500px; 
-            aspect-ratio: 5 / 7; 
-            background: #fff; border: 3px solid var(--border-color); border-radius: 16px; overflow: hidden;
-            /* 阻止外框也被捲動 */
+            position: relative; 
+            width: 100%; 
+            max-width: 500px; 
+            /* 移除強制高度，讓內容物自行撐開，完美解決變形與裁切 */
+            background: #fff; 
+            border: 3px solid var(--border-color); 
+            border-radius: 16px; 
+            overflow: hidden;
             touch-action: none; 
         }
+        
         canvas { 
-            display: block; width: 100%; height: 100%; touch-action: none; background: #fff; 
-            -webkit-touch-callout: none; -webkit-user-select: none;
+            display: block; 
+            width: 100%; 
+            height: auto; /* 讓畫布跟隨寬度完美保持 5:7 比例 */
+            aspect-ratio: 5 / 7; 
+            touch-action: none; 
+            background: #fff; 
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
         }
         
-        /* 2. 修正：設定 overflow-y: auto 避免小螢幕裁切按鈕，並縮小間距 */
         .game-overlay {
             position: absolute; inset: 0; background: rgba(255,255,255,0.95); z-index: 10;
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
@@ -585,9 +599,7 @@
     </footer>
 
     <script>
-        // =======================
         // 1. 強制阻擋 iOS 雙指縮放與點擊放大
-        // =======================
         document.addEventListener('gesturestart', function (e) {
             e.preventDefault();
         });
@@ -597,9 +609,6 @@
             }
         }, { passive: false });
 
-        // =======================
-        // UI 特效與測驗邏輯
-        // =======================
         let isTyping = false;
         function typeWriterHTML(elementId, text, speed) {
             const elem = document.getElementById(elementId);
@@ -687,9 +696,6 @@
             res.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        // =======================
-        // 遊戲與分享邏輯
-        // =======================
         function endGame(isWin) {
             gameState = isWin ? 'WIN' : 'LOSE';
             
@@ -769,7 +775,7 @@
         }
 
         // =======================
-        // Canvas 遊戲渲染核心
+        // 遊戲核心邏輯修正
         // =======================
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
@@ -788,13 +794,14 @@
         let playerStartX = 0, playerStartY = 0;
         
         let animationId;
+        let firstFrame = true; // 防呆，解決 Safari 初始時間計算跳幀
 
         const DPR = window.devicePixelRatio || 1;
         const CANVAS_W = 500, CANVAS_H = 700;
+        
+        // 移除死硬的 canvas.style 寬高，讓它徹底靠 CSS 自動維持 5:7 比例
         canvas.width = CANVAS_W * DPR;
         canvas.height = CANVAS_H * DPR;
-        canvas.style.width = CANVAS_W + 'px';
-        canvas.style.height = CANVAS_H + 'px';
         ctx.scale(DPR, DPR);
 
         function getCanvasCoords(clientX, clientY) {
@@ -851,7 +858,9 @@
             obs = []; texts = [];
             surviveTime = 0.0; overworkLevel = 0.0; gameState = 'PLAYING';
             player.x = CANVAS_W/2; player.y = CANVAS_H * 0.8; player.flash = 0;
-            lastTime = performance.now(); spawnTimer = 0; coinTimer = 0;
+            
+            firstFrame = true; // 確保時間歸零
+            spawnTimer = 0; coinTimer = 0;
             document.getElementById('canvas-container').classList.remove('danger-border');
             document.querySelectorAll('.game-overlay').forEach(el => el.classList.add('hidden'));
             animationId = requestAnimationFrame(gameLoop);
@@ -867,7 +876,9 @@
 
         function gameLoop(now) {
             if (gameState !== 'PLAYING') return;
-            const dt = now - lastTime; lastTime = now;
+            if (firstFrame) { lastTime = now; firstFrame = false; }
+            const dt = now - lastTime; 
+            lastTime = now;
             
             surviveTime += dt / 1000;
             if (surviveTime >= 20.0) { surviveTime = 20.0; endGame(true); return; }
@@ -936,6 +947,7 @@
             ctx.closePath();
             ctx.fill();
 
+            // 修復進度條防呆，避免短於圓角半徑時出現破圖
             ctx.fillStyle = pr > 0.8 ? '#e11d48' : (pr > 0.5 ? '#f59e0b' : '#10b981');
             const w2 = bW * pr;
             if (w2 > 0) {
