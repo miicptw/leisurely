@@ -2,15 +2,14 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- SEO & GEO 標記 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    
     <meta name="description" content="臺灣商務印書館重磅出版《悠閒頌》。諾貝爾文學獎得主羅素回應當代生活困境，帶你檢測過勞指數，捍衛精神自由！">
     <meta name="keywords" content="悠閒頌, 伯特蘭・羅素, 臺灣商務印書館, 心理測驗, 現代焦慮, 哲學隨筆, 工作焦慮, 工作壓力, 悠閒放鬆">
     <meta name="geo.region" content="TW-NWT">
     <meta name="geo.placename" content="Xindian District">
     
-    <!-- Open Graph 社群分享標記 (Facebook, LINE) -->
-    <meta property="og:title" content="新書上市 《悠閒頌》最關心世人幸福的哲學大師-羅素 | 臺灣商務印書館">
+    <meta property="og:title" content="新書上市《悠閒頌》幸福的哲學大師-羅素 | 臺灣商務印書館">
     <meta property="og:description" content="快來檢測你的過勞指數，捍衛精神自由！">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cptw.com.tw/">
@@ -19,7 +18,6 @@
     <title>《悠閒頌》世界越快，心就要越慢 羅素留給不安時代的智慧 | 臺灣商務印書館</title>
     
     <style>
-
         :root {
             --bg-color: #f3f4f6;
             --text-main: #1e293b;
@@ -29,35 +27,55 @@
             --accent-green: #10b981;
             --accent-orange: #ea580c;
             --border-color: #cbd5e1;
+            --hover-custom: #1e2e8f;
         }
 
-
-        html { font-size: 18px; transition: font-size 0.3s ease; scroll-behavior: smooth; }
-        html.large-text { font-size: 22px; }
+        html { 
+            font-size: 19px; 
+            transition: font-size 0.3s ease; 
+            scroll-behavior: smooth; 
+            overflow-x: hidden; 
+            width: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        html.large-text { font-size: 24px; }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
+        img, video, canvas, iframe { max-width: 100%; height: auto; }
+
         body {
             background-color: var(--bg-color);
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             color: var(--text-main); 
-            line-height: 1.6; 
+            line-height: 1.65; 
+            width: 100%;
+            position: relative;
             overflow-x: hidden;
-            word-break: keep-all; 
+            word-break: normal; 
             overflow-wrap: break-word;
         }
 
-        h1, h2, h3, h4, .balance-text { text-wrap: balance; }
+        h1, h2, h3, h4 { overflow-wrap: break-word; }
+        @supports (text-wrap: balance) {
+            h1, h2, h3, h4 { text-wrap: balance; }
+        }
 
+        button, input[type="button"], input[type="submit"] {
+            -webkit-appearance: none;
+            appearance: none;
+            font-family: inherit;
+        }
 
         :focus-visible { outline: 3px solid var(--accent-orange); outline-offset: 3px; border-radius: 4px; }
 
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 90px 20px 60px 20px; position: relative; }
 
-
-        .bg-flowers-container { position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
+        .bg-flowers-container { 
+            position: fixed; top: 0; right: 0; bottom: 0; left: 0; 
+            pointer-events: none; z-index: -1; overflow: hidden; 
+        }
         .fl-float { position: absolute; opacity: 0.6; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05)); transform: translateZ(0); }
-        
         .fl-f1 { top: 8%; left: 3%; width: 25px; animation: spin 15s linear infinite; }
         .fl-f2 { top: 18%; right: 4%; width: 20px; animation: spin-reverse 20s linear infinite; }
         .fl-f3 { top: 35%; left: 8%; width: 30px; animation: spin 18s linear infinite; }
@@ -67,84 +85,80 @@
         .fl-f7 { top: 85%; left: 6%; width: 20px; animation: spin 16s linear infinite; }
         .fl-f8 { top: 92%; right: 8%; width: 28px; animation: spin-reverse 19s linear infinite; }
 
-
         header {
             background: rgba(255, 255, 255, 0.95); border-bottom: 1px solid var(--border-color);
-            position: fixed; width: 100%; top: 0; z-index: 1000;
-            padding: 8px 15px; display: flex; flex-direction: column; align-items: center; gap: 10px;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 10px 15px; display: flex; flex-direction: column; align-items: center; gap: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .header-logo-link { display: block; text-align: center; width: 100%; }
         .header-logo { height: 26px; object-fit: contain; }
-        .header-nav { display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap; }
+        .header-nav { display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap; }
         
         .nav-btn {
             background: transparent; border: 1px solid var(--accent-blue); color: var(--accent-blue);
-            padding: 6px; border-radius: 50%; width: 36px; height: 36px;
-            display: flex; align-items: center; justify-content: center; gap: 6px;
-            font-size: 1rem; text-decoration: none; font-weight: bold; transition: 0.2s; cursor: pointer;
+            padding: 4px 12px; border-radius: 20px; 
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; text-decoration: none; font-weight: bold; transition: 0.2s; cursor: pointer;
         }
-        .nav-icon { width: 18px; height: 18px; object-fit: contain; }
-        .nav-text { display: none; } 
-        
-        .nav-btn:hover, .nav-btn:focus-visible { background: var(--accent-blue); color: #fff; }
-        .nav-btn:hover .nav-icon, .nav-btn:focus-visible .nav-icon { filter: brightness(0) invert(1); }
         .nav-btn.outline { border-color: var(--text-sub); color: var(--text-sub); }
-        .nav-btn.outline:hover, .nav-btn.outline:focus-visible { background: var(--text-sub); color: #fff; }
-
+        
+        .nav-btn:hover, .nav-btn:focus-visible, 
+        .nav-btn.outline:hover, .nav-btn.outline:focus-visible { 
+            background: var(--hover-custom); color: #fff; border-color: var(--hover-custom); 
+        }
 
         .btn-buy-nav {
             background: var(--accent-orange); color: #fff; border: none;
-            padding: 6px 14px; border-radius: 20px; font-size: 0.95rem; 
+            padding: 4px 14px; border-radius: 20px; font-size: 0.95rem; 
             text-decoration: none; font-weight: bold; transition: 0.2s;
-            display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(234,88,12,0.3);
+            display: flex; align-items: center; box-shadow: 0 2px 8px rgba(234,88,12,0.3); cursor: pointer;
         }
         .btn-buy-nav:hover, .btn-buy-nav:focus-visible { 
-            transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 4px 12px rgba(234,88,12,0.4); color: #fff;
+            transform: translateY(-2px); background: var(--hover-custom); box-shadow: 0 4px 12px rgba(30, 46, 143, 0.4); color: #fff;
         }
 
         @media (min-width: 768px) {
             header { flex-direction: row; justify-content: space-between; padding: 10px 20px; }
             .header-logo-link { width: auto; }
             .header-logo { height: 32px; }
-            .nav-btn { width: auto; height: auto; padding: 6px 14px; border-radius: 20px; font-size: 0.95rem; }
-            .nav-text { display: inline; margin-left: 4px; }
-            .btn-buy-nav { font-size: 1rem; padding: 6px 18px; }
+            .nav-btn { font-size: 1rem; padding: 4px 16px; }
+            .btn-buy-nav { font-size: 1rem; padding: 4px 18px; }
         }
 
+        #stress-test, #game-section, #canvas-container {
+            scroll-margin-top: 130px;
+        }
 
-        .hero { position: relative; margin-bottom: 60px; z-index: 1; padding-top: 10px; }
-        .hero-top { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-bottom: 30px; }
+        .hero { position: relative; margin-bottom: 60px; z-index: 1; padding-top: 10px; width: 100%; }
+        .hero-top { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-bottom: 30px; width: 100%; }
         
         .quote-bracket {
             border-left: 3px solid var(--accent-green); border-right: 3px solid var(--accent-green);
-            border-radius: 15px; padding: 15px 25px; color: var(--accent-blue);
+            border-radius: 15px; padding: 15px 20px; color: var(--accent-blue);
             font-weight: bold; font-size: 1.05rem; min-height: 110px; width: 100%; max-width: 700px;
             background: rgba(255, 255, 255, 0.85); text-align: center; line-height: 1.8;
-            margin-top: 25px; 
+            margin-top: 25px;
         }
 
-        .hero-main { display: grid; grid-template-columns: 1fr; gap: 30px; align-items: center; }
-
+        .hero-main { display: grid; grid-template-columns: 1fr; gap: 30px; align-items: center; width: 100%; }
         .hero-media-boy { order: 1; text-align: center; width: 100%; }
         .boy-img { width: 100%; max-width: 550px; mix-blend-mode: multiply; }
         
-        .hero-text-content { order: 2; display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .title-h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 5px; color: #000; letter-spacing: 4px; }
+        .hero-text-content { order: 2; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
+        .title-h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.2; margin-bottom: 5px; color: #000; letter-spacing: 2px; }
         .title-sub { font-size: 1.25rem; font-weight: bold; margin-bottom: 10px; color: var(--text-main); }
         .title-eng { font-family: 'Times New Roman', serif; font-size: 1rem; color: var(--text-sub); margin-bottom: 25px; font-weight: bold; min-height: 1.5em; }
         
-        .tags-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .tags-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px; width: 100%; }
         .dotted-tag {
             border: 2px dotted var(--accent-blue); color: var(--accent-orange); background: #fff;
             padding: 8px 16px; border-radius: 25px; font-weight: bold; font-size: 0.95rem;
             animation: color-shift 2.5s infinite alternate ease-in-out;
         }
 
-        .desc-text { font-size: 1.2rem; font-weight: bold; color: var(--text-main); margin-bottom: 10px; }
-        .desc-sub { font-size: 1rem; color: var(--text-sub); }
-
-        .hero-cta { margin-top: 20px; animation: fadeUp 0.8s forwards; opacity: 0; animation-delay: 1s; }
+        .desc-text { font-size: 1.2rem; font-weight: bold; color: var(--text-main); margin-bottom: 10px; width: 100%; }
+        .desc-sub { font-size: 1rem; color: var(--text-sub); width: 100%; }
 
         @media (min-width: 900px) {
             .hero-top { flex-direction: row; justify-content: center; }
@@ -152,43 +166,64 @@
             .hero-main { grid-template-columns: 1fr 1fr; align-items: center; }
             .hero-text-content { order: 1; text-align: left; align-items: flex-start; }
             .hero-media-boy { order: 2; text-align: right; }
-            .title-h1 { font-size: 4.5rem; }
+            .title-h1 { font-size: 4.5rem; letter-spacing: 4px; }
             .tags-row { justify-content: flex-start; }
             .boy-img { margin-left: 0; width: 100%; max-width: 700px; }
-            .hero-cta { margin-top: 30px; }
         }
 
+        @media (max-width: 400px) {
+            html { font-size: 17.5px; }
+            .title-h1 { font-size: 2.8rem; }
+            .container { padding: 90px 15px 50px 15px; }
+        }
 
-        .card { background: #fff; border: 1px solid var(--border-color); border-radius: 16px; padding: 30px 20px; margin-bottom: 30px; position: relative; z-index: 2; }
+        .card { background: #fff; border: 1px solid var(--border-color); border-radius: 16px; padding: 30px 20px; margin-bottom: 30px; position: relative; z-index: 2; width: 100%; }
+        
         .section-title { font-size: 1.6rem; color: var(--accent-blue); font-weight: 900; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .section-title::before { content: ""; display: block; width: 6px; height: 1.1em; background: var(--accent-blue); border-radius: 3px; }
+        
+        .section-title.title-orange { color: var(--accent-orange); }
+        .section-title.title-orange::before { background: var(--accent-orange); }
 
         .btn-game {
             background: var(--accent-green); color: #fff; border: none; padding: 12px 25px;
             font-size: 1.1rem; font-weight: bold; border-radius: 30px; cursor: pointer; transition: 0.2s; width: 100%; max-width: 280px; text-decoration: none; display: inline-block; text-align: center;
         }
-        .btn-game:hover, .btn-game:focus-visible { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .btn-game:hover, .btn-game:focus-visible { 
+            background: var(--hover-custom) !important; 
+            transform: translateY(-2px); box-shadow: 0 4px 10px rgba(30,46,143,0.3); 
+        }
         .btn-outline { background: transparent; border: 2px solid var(--accent-blue); color: var(--accent-blue); }
-        .btn-outline:hover, .btn-outline:focus-visible { background: var(--accent-blue); color: #fff; }
+        .btn-outline:hover, .btn-outline:focus-visible { 
+            background: var(--hover-custom) !important; color: #fff !important; border-color: var(--hover-custom) !important; 
+        }
 
-        /* --game-- */
         .game-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 60px; width: 100%; }
         .game-wrapper {
-            position: relative; width: 100%; max-width: 500px; aspect-ratio: 3/4; 
+            position: relative; width: 100%; max-width: 500px; 
+            aspect-ratio: 5 / 7; /
             background: #fff; border: 3px solid var(--border-color); border-radius: 16px; overflow: hidden;
         }
-        canvas { display: block; width: 100%; height: 100%; touch-action: none; background: #fff; }
+        canvas { 
+            display: block; 
+            width: 100%; 
+            height: 100%; 
+            touch-action: none; 
+            background: #fff; 
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+        }
         
         .game-overlay {
             position: absolute; inset: 0; background: rgba(255,255,255,0.95); z-index: 10;
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            padding: 20px; text-align: center; gap: 15px; 
+            padding: 20px; text-align: center; gap: 12px; width: 100%; height: 100%;
         }
         .hidden { display: none !important; }
 
-        .social-share-row { display: flex; gap: 15px; justify-content: center; }
+        .social-share-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
         .share-btn-icon {
-            width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer; background: transparent;
+            width: 45px; height: 45px; border-radius: 50%; border: none; cursor: pointer; background: transparent;
             display: flex; align-items: center; justify-content: center; transition: 0.2s; padding: 0;
         }
         .share-btn-icon img { width: 100%; height: 100%; object-fit: contain; }
@@ -196,20 +231,17 @@
 
         .danger-border { animation: flash-danger 0.3s infinite alternate !important; }
 
-
-        .b2-video-showcase { text-align: center; margin-bottom: 30px; margin-top: 40px; position: relative; z-index: 2; }
+        .b2-video-showcase { text-align: center; margin: 50px 0; position: relative; z-index: 2; width: 100%; }
         .b2-video-showcase img { width: 100%; max-width: 600px; mix-blend-mode: multiply; filter: contrast(1.05); display: inline-block; }
 
-
-        .book-showcase { text-align: center; margin-bottom: 10px; }
+        .book-showcase { text-align: center; margin-bottom: 10px; width: 100%; }
         .book-showcase img { width: 100%; max-width: 260px; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15)); display: inline-block; }
 
         details { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 12px; }
         summary { padding: 15px 20px; font-size: 1rem; font-weight: bold; color: var(--accent-blue); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
         summary::after { content: "▼"; font-size: 0.8rem; }
         details[open] summary::after { content: "▲"; }
-        .details-content { padding: 15px 20px; color: var(--text-sub); font-size: 0.95rem; border-top: 1px solid var(--border-color); background: #fff; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; }
-
+        .details-content { padding: 15px 20px; color: var(--text-sub); font-size: 0.95rem; border-top: 1px solid var(--border-color); background: #fff; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; text-align: justify; }
 
         .quiz-item { margin-bottom: 25px; }
         .quiz-item h4 { margin-bottom: 12px; font-size: 1.05rem; color: var(--accent-blue); } 
@@ -221,11 +253,11 @@
             background: #fff; border: 2px solid var(--border-color); border-radius: 10px; padding: 15px; cursor: pointer;
             font-size: 0.95rem; color: var(--text-sub); display: flex; align-items: center; gap: 12px; transition: 0.2s; width: 100%; text-align: left; font-family: inherit;
         }
+        .quiz-option-card:hover { border-color: var(--hover-custom); }
         .quiz-option-card.selected { border-color: var(--accent-blue); background: #e0f2fe; color: var(--accent-blue); font-weight: bold; }
         .quiz-radio-circle { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border-color); display: flex; justify-content: center; align-items: center; flex-shrink: 0; }
         .quiz-option-card.selected .quiz-radio-circle { border-color: var(--accent-blue); }
         .quiz-option-card.selected .quiz-radio-circle::after { content: ""; width: 10px; height: 10px; background: var(--accent-blue); border-radius: 50%; }
-
 
         .related-books-container { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 20px; margin-bottom: 20px; }
         @media (min-width: 768px) { .related-books-container { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
@@ -235,27 +267,24 @@
         .r-book-card-link { display: flex; flex-direction: column; align-items: center; text-align: center; text-decoration: none; color: inherit; height: 100%; width: 100%; outline: none; }
         .r-book-card img { width: auto; height: 180px; max-width: 100%; object-fit: contain; margin-bottom: 15px; filter: drop-shadow(2px 5px 10px rgba(0,0,0,0.15)); }
         .r-book-card h4 { font-size: 1.15rem; font-weight: 900; color: var(--text-main); margin-bottom: 10px; line-height: 1.4; }
-        .r-book-card p { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 20px; text-align: justify; flex-grow: 1; width: 100%; word-break: normal; overflow-wrap: break-word; line-height: 1.6; }
+        .r-book-card p { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 20px; text-align: justify; flex-grow: 1; width: 100%; line-height: 1.6; }
         .r-book-card .btn-game { margin-top: auto; } 
-
 
         .fb-reels-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px; margin-bottom: 20px; }
         .fb-reel-wrapper { flex: 1 1 250px; max-width: 300px; display: flex; flex-direction: column; align-items: center; }
         .fb-reel { 
-            width: 100%; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); 
+            width: 100%; min-height: 400px; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); 
             background: #000; box-shadow: 0 4px 15px rgba(0,0,0,0.1); flex-shrink: 0;
         }
         .fb-reel iframe { width: 100%; height: 100%; border: none; display: block; }
-        .fb-fallback-link { display: block; text-align: center; font-size: 0.85rem; color: var(--accent-blue); margin-top: 8px; text-decoration: none; font-weight: bold; }
-        .fb-fallback-link:hover { text-decoration: underline; color: var(--accent-orange); }
+        .fb-fallback-link { display: block; text-align: center; font-size: 0.85rem; color: var(--accent-blue); margin-top: 8px; text-decoration: none; font-weight: bold; transition: 0.2s; }
+        .fb-fallback-link:hover { text-decoration: underline; color: var(--hover-custom); }
 
-        /* 頁腳 */
-        footer { background: #ffffff; border-top: 1px solid var(--border-color); padding: 40px 20px; text-align: center; position: relative; z-index: 2; }
+        footer { background: #ffffff; border-top: 1px solid var(--border-color); padding: 40px 20px; text-align: center; position: relative; z-index: 2; width: 100%; }
         .footer-social { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 15px 0; }
         .footer-social img { width: 35px; height: 35px; transition: 0.2s; object-fit: contain; }
         .footer-social a:hover img, .footer-social a:focus-visible img { transform: translateY(-3px); }
 
-        /* move */
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
@@ -268,7 +297,6 @@
 </head>
 <body>
 
-
     <div class="bg-flowers-container" aria-hidden="true">
         <img src="images/a2.png" class="fl-float fl-f1" alt="">
         <img src="images/a3.png" class="fl-float fl-f2" alt="">
@@ -280,178 +308,54 @@
         <img src="images/a2.png" class="fl-float fl-f8" alt="">
     </div>
 
-    <!-- 語意化 Header 導覽區 -->
     <header aria-label="主要導覽區">
         <a href="https://cptw.com.tw/" target="_blank" rel="noopener noreferrer" class="header-logo-link" aria-label="前往臺灣商務印書館首頁">
             <img src="images/logo-2.webp" alt="臺灣商務印書館" class="header-logo" onerror="this.style.display='none'">
         </a>
         <nav class="header-nav" aria-label="網站功能導覽">
-            <!-- 導覽列：立即購買按鈕 (醒目橘色) -->
-            <a href="https://cptw.com.tw/book/01030040/54" target="_blank" rel="noopener noreferrer" class="btn-buy-nav" aria-label="立即購買悠閒頌">
-                🛒<span class="nav-text" style="display:inline;"> 立即購買</span>
-            </a>
-            
-            <button class="nav-btn outline" onclick="toggleFontSize()" id="fontSizeBtn" aria-label="切換大字模式">
-                <img src="https://cdn-icons-png.flaticon.com/128/16799/16799322.png" alt="" class="nav-icon" aria-hidden="true">
-                <span class="nav-text"> 大字模式</span>
-            </button>
-            <a href="#canvas-container" class="nav-btn outline" aria-label="前往生存戰遊戲">
-                <img src="https://cdn-icons-png.flaticon.com/128/808/808439.png" alt="" class="nav-icon" aria-hidden="true">
-                <span class="nav-text"> 捍衛自由</span>
-            </a>
-            <a href="#stress-test" class="nav-btn outline" aria-label="前往過勞診斷測驗">
-                <img src="https://cdn-icons-png.flaticon.com/128/6735/6735102.png" alt="" class="nav-icon" aria-hidden="true">
-                <span class="nav-text"> 過勞診斷</span>
-            </a>
-            <a href="https://cptw.com.tw/" target="_blank" rel="noopener noreferrer" class="nav-btn outline" aria-label="官方網站">
-                <img src="images/logo-1.webp" alt="" class="nav-icon" style="filter: grayscale(100%) opacity(0.7);" aria-hidden="true">
-                <span class="nav-text"> 官方網站</span>
-            </a>
+            <a href="https://cptw.com.tw/book/01030040/54" target="_blank" rel="noopener noreferrer" class="btn-buy-nav" aria-label="立即購買悠閒頌">立即購買</a>
+            <button class="nav-btn outline" onclick="toggleFontSize()" id="fontSizeBtn" aria-label="切換大字模式">放大</button>
+            <a href="#stress-test" class="nav-btn outline" aria-label="前往過勞診斷測驗">過勞檢測</a>
+            <a href="#game-section" class="nav-btn outline" aria-label="前往生存戰遊戲">玩遊戲</a>
         </nav>
     </header>
 
     <main class="container">
         
-        <!-- 首屏主視覺區 -->
         <section class="hero" aria-label="活動主視覺">
             <div class="hero-top">
-                <div class="quote-bracket balance-text" id="typewriter-quote" aria-live="polite"></div>
+                <div id="typewriter-quote" class="quote-bracket" aria-live="polite"></div>
             </div>
 
             <div class="hero-main">
-                <!-- 1. 男孩圖 -->
                 <div class="hero-media-boy">
                     <img src="images/b1.avif" alt="男孩悠閒閱讀的情境插畫" class="boy-img" onerror="this.style.display='none'">
                 </div>
 
-                <!-- 2. 主標題文字區 -->
                 <div class="hero-text-content">
                     <h1 class="title-h1">悠閒頌</h1>
-                    <h2 class="title-sub balance-text">當世界愈來愈快，羅素留給不安時代的智慧</h2>
-                    <!-- 英文書名打字機 -->
-                    <div id="typewriter-eng" class="title-eng balance-text" aria-live="polite"></div>
+                    <h2 class="title-sub">當世界愈來愈快，羅素留給不安時代的智慧</h2>
+                    <div id="typewriter-eng" class="title-eng" aria-live="polite"></div>
                     
                     <div class="tags-row" aria-label="本書特點">
-                        <span class="dotted-tag tag-1">在不確定世界中尋找安定感</span>
+                        <span class="dotted-tag tag-1">過勞與成功焦慮的轉念</span>
                         <span class="dotted-tag tag-2">技術轉型下的社會觀</span>
                         <span class="dotted-tag tag-3">在不確定世界中尋找安定感</span>
                     </div>
 
-                    <p class="desc-text balance-text">《悠閒頌》不只是哲學隨筆，<br>更是開創性的經典著作、一場關於現代生活的覺醒。</p>
-                    <p class="desc-sub balance-text">書中談及幸福、工作、教育、文明與思想，<br>他自稱寫的都是常識，讀來卻是超越時代的非凡智慧。</p>
-                    
+                    <p class="desc-text">《悠閒頌》不只是哲學隨筆，<br>更是開創性的經典著作、一場關於現代生活的覺醒。</p>
+                    <p class="desc-sub">書中談及幸福、工作、教育、文明與思想，<br>他自稱寫的都是常識，讀來卻是超越時代的非凡智慧。</p>
                 </div>
             </div>
         </section>
 
-        <!-- 遊戲互動區 -->
-        <section class="card game-section" id="game-section" aria-label="自由靈魂生存戰小遊戲" style="padding:0; border:none; background:transparent;">
-            <div class="game-wrapper" id="canvas-container">
-                <!-- Canvas 備用文字 (a11y) -->
-                <canvas id="gameCanvas" width="500" height="700" aria-label="躲避工作障礙物小遊戲">
-                    您的瀏覽器不支援 HTML5 Canvas，無法遊玩此遊戲，但不影響您閱讀下方文章。
-                </canvas>
-                
-                <div id="screen-start" class="game-overlay">
-                    <h2 style="font-size:1.8rem; color:var(--accent-blue); margin:0;">自由靈魂生存戰</h2>
-                    <p style="color:var(--accent-red); font-weight:bold; font-size:1.1rem; margin:0;">倒數 20 秒，拒絕過勞！</p>
-                    <div style="background:#f8fafc; padding:15px; border-radius:10px; font-size:0.95rem; text-align:left; color:var(--text-sub); border: 1px solid var(--border-color); margin-top:5px;">
-                        💡 <b>機制說明：</b><br>
-                        1. 螢幕任意處【按住滑動】操控藍色光點。<br>
-                        2. 💥 撞到工作：<b style="color:var(--accent-red)">增加過勞時數</b>，滿載即出局。<br>
-                        3. 🪙 吃到金幣：<b style="color:var(--accent-green)">減少過勞時數</b>，延長存活機會。
-                    </div>
-                    <button class="btn-game" style="margin-top:10px;" onclick="startGame()">開始捍衛靈魂</button>
-                </div>
-
-                <div id="screen-lose" class="game-overlay hidden">
-                    <h2 style="color:var(--accent-red); font-size:2rem; margin:0;">靈魂已陣亡</h2>
-                    <p id="lose-reason" style="font-size:1.1rem; font-weight:bold; margin:0;"></p>
-                    <div style="background:#fef2f2; padding:15px; border-radius:8px; border-left:4px solid var(--accent-red); font-size:0.95rem; text-align: left; margin: 10px 0;">
-                        「我們看不慣任何人悠閒度日，不管他享受的生活情調有多麼高雅，我們都覺得刺眼。」—— 羅素
-                    </div>
-                    <div class="social-share-row" style="margin-top:0;">
-                        <button class="share-btn-icon" onclick="shareSocial('fb', 'lose')" aria-label="分享成績到 Facebook">
-                            <img src="images/facebook.webp" alt="FB" onerror="this.src='https://cdn-icons-png.flaticon.com/512/124/124010.png'">
-                        </button>
-                        <button class="share-btn-icon" onclick="shareSocial('line', 'lose')" aria-label="分享成績到 LINE">
-                            <img src="images/line.webp" alt="LINE" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg'">
-                        </button>
-                    </div>
-                    <button class="btn-game" style="background:var(--text-sub); margin-top:10px;" onclick="startGame()">重新挑戰</button>
-                </div>
-
-                <div id="screen-win" class="game-overlay hidden">
-                    <h2 style="color:var(--accent-green); font-size:2rem; margin:0;">🎉 成功捍衛自由</h2>
-                    <p style="font-size:1.1rem; font-weight:bold; margin:0;">撐過 20 秒，榮獲【悠閒哲學家】稱號！</p>
-                    <div style="font-size: 1.5rem; color: var(--accent-orange); font-weight: bold; margin: 10px 0;">特惠碼：000000</div>
-                    <div class="social-share-row" style="margin-top:0;">
-                        <button class="share-btn-icon" onclick="shareSocial('fb', 'win')" aria-label="分享成績到 Facebook">
-                            <img src="images/facebook.webp" alt="FB" onerror="this.src='https://cdn-icons-png.flaticon.com/512/124/124010.png'">
-                        </button>
-                        <button class="share-btn-icon" onclick="shareSocial('line', 'win')" aria-label="分享成績到 LINE">
-                            <img src="images/line.webp" alt="LINE" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg'">
-                        </button>
-                    </div>
-                    <button class="btn-game" style="background:var(--text-sub); margin-top:10px;" onclick="startGame()">再次挑戰</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- b2 影片 -->
-        <div class="b2-video-showcase" aria-hidden="true">
-            <img src="images/b2.avif" alt="悠閒頌動畫視覺" onerror="this.style.display='none'">
-        </div>
-
-        <!-- 書籍介紹區 -->
-        <article class="card" id="book-info" aria-labelledby="book-info-title">
-            <h2 id="book-info-title" class="section-title">關於《悠閒頌》</h2>
-            
-            <div class="book-showcase">
-                <img src="images/book.webp" alt="《悠閒頌》實體書封面" onerror="this.style.display='none'">
-                
-            </div>
-
-            <p class="balance-text" style="margin-bottom: 25px; margin-top: 30px;">
-                諾貝爾文學獎得主、世紀哲學家——羅素在近百年前寫下的《悠閒頌》，如今反而顯得格外清醒。這本書不是單純勸人偷懶，而是一場關於現代生活的覺醒。當你被生產力壓得喘不過氣，羅素提醒我們：<strong>真正的幸福與智慧，往往誕生於閒暇之中。</strong>
-            </p>
-            
-            <h3 class="section-title" style="font-size: 1.4rem;">本書核心探討重點</h3>
-            
-            <details open>
-                <summary>1. 歌頌懶散：為正當的閒暇全面辯護</summary>
-                <div class="details-content balance-text">現代社會崇拜效率與工作，把閒暇看作浪費。羅素主張少一點勞碌、多一點思考，閒暇不是浪費，而是培養創意、自由與思想深度的泉源。他建議社會減少工時，讓每個人都有時間享受生活與精神自由。</div>
-            </details>
-            <details>
-                <summary>2. 「無用」知識的豐饒價值</summary>
-                <div class="details-content balance-text">哲學、藝術與純理論科學常被標籤為「無用」，但它們的價值不在於直接應用，而在於提升心智與理解世界。它們能提供精神上的緩衝，避免人類因過度專注於狹隘功利目標而陷入緊繃與狂熱。</div>
-            </details>
-            <details>
-                <summary>3. 現代的邁達斯：破除金錢迷思</summary>
-                <div class="details-content balance-text">很多人過度追求金錢和財富，像現代邁達斯王。羅素提醒，金錢不應支配生活，真正的幸福來自閒暇、自由思考和人際關係，別讓金錢控制生活。</div>
-            </details>
-            <details>
-                <summary>4. 社會同質性與教育反思</summary>
-                <div class="details-content balance-text">現代社會追求效率與標準化，導致文化、思想和個性的單一化。羅素呼籲尊重差異，並強調教育不應只強調服從與紀律，而要培養獨立思考與創造力，讓學生學會自律而非單純服從。</div>
-            </details>
-            <details>
-                <summary>5. 青年犬儒心態與極端思想威脅</summary>
-                <div class="details-content balance-text">青年對世界失望，多因教育不足與理想現實差距。同時，法西斯利用恐懼煽動群眾，共產主義則有集權傾向，這些都是對理性的威脅。羅素主張真正安全的道路是理性、自由和社會公平。</div>
-            </details>
-            <details>
-                <summary>6. 仰望宇宙：科學帶來的謙卑與好奇</summary>
-                <div class="details-content balance-text">從「人與昆蟲」的對比到「論彗星」的科學觀察，羅素幽默地探討人類的脆弱與不要太自大。觀察宇宙能激發好奇心，欣賞自然之美，提醒人類宇宙的廣闊與謙虛。</div>
-            </details>
-        </article>
-
-        <!-- 心理測驗區 -->
         <section class="card" id="stress-test" aria-labelledby="stress-test-title">
-            <h2 id="stress-test-title" class="section-title" style="margin-bottom: 5px;">過勞指數檢測</h2>
-            <h3 class="balance-text" style="font-size:1.1rem; color:var(--text-sub); margin-bottom:25px; font-weight:bold;">你中了現代「邁達斯詛咒」嗎？</h3>
+            <h2 id="stress-test-title" class="section-title title-orange" style="margin-bottom: 5px;">過勞指數檢測</h2>
+            <h3 style="font-size:1.1rem; color:var(--text-sub); margin-bottom:25px; font-weight:bold;">你中了現代「邁達斯詛咒」嗎？</h3>
             
             <div id="quiz-form">
                 <fieldset class="quiz-item" style="border:none; padding:0; margin-bottom: 25px;">
-                    <legend class="balance-text" style="margin-bottom:12px; font-size:1.05rem; font-weight:bold; color: var(--accent-blue);">1. 週末空下來兩小時，你決定？</legend>
+                    <legend style="margin-bottom:12px; font-size:1.05rem; font-weight:bold; color: var(--accent-blue);">1. 週末空下來兩小時，你決定？</legend>
                     <div class="quiz-options">
                         <button type="button" class="quiz-option-card" onclick="selOpt('q1','A',this)" aria-pressed="false">
                             <span class="quiz-radio-circle" aria-hidden="true"></span> 趕快拿來進修或處理工作
@@ -463,7 +367,7 @@
                 </fieldset>
                 
                 <fieldset class="quiz-item" style="border:none; padding:0; margin-bottom: 25px;">
-                    <legend class="balance-text" style="margin-bottom:12px; font-size:1.05rem; font-weight:bold; color: var(--accent-blue);">2. 學習「新技能」最重要的是？</legend>
+                    <legend style="margin-bottom:12px; font-size:1.05rem; font-weight:bold; color: var(--accent-blue);">2. 學習「新技能」最重要的是？</legend>
                     <div class="quiz-options">
                         <button type="button" class="quiz-option-card" onclick="selOpt('q2','A',this)" aria-pressed="false">
                             <span class="quiz-radio-circle" aria-hidden="true"></span> 必須能寫進履歷、提高產值
@@ -475,7 +379,7 @@
                 </fieldset>
                 
                 <fieldset class="quiz-item" style="border:none; padding:0; margin-bottom: 25px;">
-                    <legend class="balance-text" style="margin-bottom:12px; font-size:1.05rem; font-weight:bold; color: var(--accent-blue);">3. 行事曆突然空出一整天，你會？</legend>
+                    <legend style="margin-bottom:12px; font-size:1.05rem; font-weight:bold; color: var(--accent-blue);">3. 行事曆突然空出一整天，你會？</legend>
                     <div class="quiz-options">
                         <button type="button" class="quiz-option-card" onclick="selOpt('q3','A',this)" aria-pressed="false">
                             <span class="quiz-radio-circle" aria-hidden="true"></span> 覺得恐慌，想辦法塞滿行程
@@ -487,7 +391,7 @@
                 </fieldset>
                 
                 <fieldset class="quiz-item" style="border:none; padding:0; margin-bottom: 25px;">
-                    <legend class="balance-text" style="margin-bottom:12px; font-size:1.05rem; font-weight:bold; color: var(--accent-blue);">4. 對於「成功」的定義偏向？</legend>
+                    <legend style="margin-bottom:12px; font-size:1.05rem; font-weight:bold; color: var(--accent-blue);">4. 對於「成功」的定義偏向？</legend>
                     <div class="quiz-options">
                         <button type="button" class="quiz-option-card" onclick="selOpt('q4','A',this)" aria-pressed="false">
                             <span class="quiz-radio-circle" aria-hidden="true"></span> 財富自由，職位步步高升
@@ -499,7 +403,7 @@
                 </fieldset>
                 
                 <fieldset class="quiz-item" style="border:none; padding:0; margin-bottom: 25px;">
-                    <legend class="balance-text" style="margin-bottom:12px; font-size:1.05rem; font-weight:bold; color: var(--accent-blue);">5. 睡前滑手機，通常看什麼？</legend>
+                    <legend style="margin-bottom:12px; font-size:1.05rem; font-weight:bold; color: var(--accent-blue);">5. 睡前滑手機，通常看什麼？</legend>
                     <div class="quiz-options">
                         <button type="button" class="quiz-option-card" onclick="selOpt('q5','A',this)" aria-pressed="false">
                             <span class="quiz-radio-circle" aria-hidden="true"></span> 跟工作有關的相關資訊
@@ -515,20 +419,116 @@
                 </div>
             </div>
 
-            <!-- 測驗結果 -->
             <div id="quiz-result" class="hidden" aria-live="polite" style="background:#f0fdf4; border:2px solid #bbf7d0; border-radius:12px; padding:25px; margin-top:30px; text-align:center;">
                 <h3 id="res-title" style="font-size: 1.4rem; margin-bottom: 10px;"></h3>
-                <p id="res-desc" class="balance-text" style="font-weight: bold; margin-bottom: 15px; color: var(--text-main);"></p>
-                <div id="res-quote" class="balance-text" style="text-align: left; background: #fff; padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent-blue); font-size: 0.95rem; color: var(--text-sub);"></div>
+                <p id="res-desc" style="font-weight: bold; margin-bottom: 15px; color: var(--text-main);"></p>
+                <div id="res-quote" style="text-align: left; background: #fff; padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent-blue); font-size: 0.95rem; color: var(--text-sub);"></div>
             </div>
         </section>
 
-        <!-- 推薦閱讀 -->
+        <div class="b2-video-showcase" aria-hidden="true">
+            <img src="images/b2.avif" alt="悠閒頌動畫視覺" onerror="this.style.display='none'">
+        </div>
+
+        <section class="card game-section" id="game-section" aria-label="自由靈魂生存戰小遊戲" style="padding:0; border:none; background:transparent;">
+            <div class="game-wrapper" id="canvas-container">
+                <canvas id="gameCanvas" width="500" height="700" aria-label="躲避工作障礙物小遊戲">
+                    您的瀏覽器不支援 HTML5 Canvas，無法遊玩此遊戲，但不影響您閱讀下方文章。
+                </canvas>
+                
+                <div id="screen-start" class="game-overlay">
+                    <h2 style="font-size:1.8rem; color:var(--accent-blue); margin:0;">自由靈魂生存戰</h2>
+                    <p style="color:var(--accent-red); font-weight:bold; font-size:1.1rem; margin:0;">倒數20秒，拒絕過勞！</p>
+                    <div style="background:#f8fafc; padding:15px; border-radius:10px; font-size:0.95rem; text-align:left; color:var(--text-sub); border: 1px solid var(--border-color); margin-top:5px;">
+                        💡 <b>機制說明：</b><br>
+                        1. 螢幕任意處【按住滑動】操控藍色光點。<br>
+                        2. 💥 撞到工作：<b style="color:var(--accent-red)">增加過勞時數</b>，滿載即出局。<br>
+                        3. 🪙 吃到金幣：<b style="color:var(--accent-green)">減少過勞時數</b>，延長存活機會。
+                    </div>
+                    <button class="btn-game" style="margin-top:10px;" onclick="startGame()">開始捍衛靈魂</button>
+                </div>
+
+                <div id="screen-result" class="game-overlay hidden">
+                    <img id="result-img" src="" alt="結果圖片" style="width:100%; max-width:280px; height:auto; border-radius:10px; margin-bottom: 15px; object-fit: contain; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    
+                    <div style="margin-bottom: 15px;">
+                        <h2 id="result-title" style="font-size:1.6rem; margin:0 0 8px 0; line-height: 1.2;"></h2>
+                        <p id="result-desc" style="font-size:0.95rem; font-weight:bold; margin:0; color:var(--text-sub);"></p>
+                    </div>
+                    
+                    <div class="social-share-row">
+                        <button class="share-btn-icon" onclick="shareSocial('fb')" aria-label="分享到 Facebook">
+                            <img src="images/facebook.webp" alt="FB" onerror="this.src='https://cdn-icons-png.flaticon.com/512/124/124010.png'">
+                        </button>
+                        <button class="share-btn-icon" onclick="shareSocial('line')" aria-label="分享到 LINE">
+                            <img src="images/line.webp" alt="LINE" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg'">
+                        </button>
+                        <button class="share-btn-icon" onclick="shareSocial('ig')" aria-label="分享到 Instagram">
+                            <img src="images/ig.webp" alt="IG" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2111/2111463.png'">
+                        </button>
+                        <button class="share-btn-icon" onclick="shareSocial('threads')" aria-label="分享到 Threads">
+                            <img src="images/threads.webp" alt="Threads" onerror="this.src='https://seeklogo.com/images/T/threads-logo-E9BA734BF6-seeklogo.com.png?v=638252100950000000'">
+                        </button>
+                    </div>
+                    
+                    <button class="btn-game" style="background:var(--text-sub); margin-top:20px; padding: 10px 25px;" onclick="startGame()">再次挑戰</button>
+                </div>
+            </div>
+        </section>
+
+        <article class="card" id="book-info" aria-labelledby="book-info-title">
+            <h2 id="book-info-title" class="section-title title-orange">關於《悠閒頌》</h2>
+            
+            <div class="book-showcase">
+                <img src="images/book.webp" alt="《悠閒頌》實體書封面" onerror="this.style.display='none'">
+            </div>
+
+            <p style="margin-bottom: 25px; margin-top: 30px;">
+                諾貝爾文學獎得主、世紀哲學家——羅素在近百年前寫下的《悠閒頌》，如今反而顯得格外清醒。這本書不是單純勸人偷懶，而是一場關於現代生活的覺醒。當你被生產力壓得喘不過氣，羅素提醒我們：<strong>真正的幸福與智慧，往往誕生於閒暇之中。</strong>
+            </p>
+            
+            <h3 class="section-title" style="font-size: 1.4rem;">本書核心探討重點</h3>
+            
+            <details open>
+                <summary>1. 歌頌懶散：為正當的閒暇全面辯護</summary>
+                <div class="details-content">現代社會崇拜效率與工作，把閒暇看作浪費。羅素主張少一點勞碌、多一點思考，閒暇不是浪費，而是培養創意、自由與思想深度的泉源。他建議社會減少工時，讓每個人都有時間享受生活與精神自由。</div>
+            </details>
+            <details>
+                <summary>2. 「無用」知識的豐饒價值</summary>
+                <div class="details-content">哲學、藝術與純理論科學常被標籤為「無用」，但它們的價值不在於直接應用，而在於提升心智與理解世界。它們能提供精神上的緩衝，避免人類因過度專注於狹隘功利目標而陷入緊繃與狂熱。</div>
+            </details>
+            <details>
+                <summary>3. 現代的邁達斯：破除金錢迷思</summary>
+                <div class="details-content">很多人過度追求金錢和財富，像現代邁達斯王。羅素提醒，金錢不應支配生活，真正的幸福來自閒暇、自由思考和人際關係，別讓金錢控制生活。</div>
+            </details>
+            <details>
+                <summary>4. 社會同質性與教育反思</summary>
+                <div class="details-content">現代社會追求效率與標準化，導致文化、思想和個性的單一化。羅素呼籲尊重差異，並強調教育不應只強調服從與紀律，而要培養獨立思考與創造力，讓學生學會自律而非單純服從。</div>
+            </details>
+            <details>
+                <summary>5. 青年犬儒心態與極端思想威脅</summary>
+                <div class="details-content">青年對世界失望，多因教育不足與理想現實差距。同時，法西斯利用恐懼煽動群眾，共產主義則有集權傾向，這些都是對理性的威脅。羅素主張真正安全的道路是理性、自由和社會公平。</div>
+            </details>
+            <details>
+                <summary>6. 仰望宇宙：科學帶來的謙卑與好奇</summary>
+                <div class="details-content">從「人與昆蟲」的對比到「論彗星」的科學觀察，羅素幽默地探討人類的脆弱與不要太自大。觀察宇宙能激發好奇心，欣賞自然之美，提醒人類宇宙的廣闊與謙虛。</div>
+            </details>
+        </article>
+
         <section class="card" aria-labelledby="recommend-books-title">
             <h2 id="recommend-books-title" class="section-title">重拾經典，閱讀人生</h2>
             <p style="color:var(--text-sub); margin-bottom: 15px;">臺灣商務印書館為您精選更多經典好書：</p>
             
             <div class="related-books-container">
+                <article class="r-book-card">
+                    <a href="https://cptw.com.tw/book/01000262" target="_blank" rel="noopener noreferrer" class="r-book-card-link" aria-label="前往購買尼采思想漫遊書籍">
+                        <img src="images/book-02.webp" alt="尼采思想漫遊" onerror="this.style.display='none'">
+                        <h4>尼采思想漫遊</h4>
+                        <p>帶領讀者深入淺出地探索尼采的哲學世界，重新審視生命、價值與超人哲學。在喧囂盲從的現代社會中，為我們的心靈尋找全新出口，獲得肯定自我與擁抱現實的強大力量。</p>
+                        <span class="btn-game btn-outline" style="padding: 8px 20px; font-size:0.95rem; border-radius:30px; width:auto;">看更多介紹</span>
+                    </a>
+                </article>
+
                 <article class="r-book-card">
                     <a href="https://cptw.com.tw/book/08040269" target="_blank" rel="noopener noreferrer" class="r-book-card-link" aria-label="前往購買先知書籍">
                         <img src="images/book-01.webp" alt="先知，紀伯倫的言與靈" onerror="this.src='https://d1i8d984en2aby.cloudfront.net/products/2025/7971/conversions/01K85GTZR8GADNZSKMWZM7PDJ7-product_preview.webp'">
@@ -537,19 +537,12 @@
                         <span class="btn-game btn-outline" style="padding: 8px 20px; font-size:0.95rem; border-radius:30px; width:auto;">看更多介紹</span>
                     </a>
                 </article>
+
                 <article class="r-book-card">
-                    <a href="https://cptw.com.tw/book/08040268" target="_blank" rel="noopener noreferrer" class="r-book-card-link" aria-label="前往購買沙與沫書籍">
-                        <img src="images/book-02.webp" alt="沙與沫，紀伯倫的哲與思" onerror="this.src='https://d1i8d984en2aby.cloudfront.net/products/2025/7905/conversions/01K3FTXFT63PWAEAYPWB3S0MF7-product_preview.webp'">
-                        <h4>沙與沫，紀伯倫的哲與思</h4>
-                        <p>經典格言集，充滿對生命、自然與人類心靈的深刻洞察。書中的每一句短語都宛如海灘上的細沙與浪沫，看似微小卻蘊含宇宙的浩瀚，適合在任何片刻翻閱。</p>
-                        <span class="btn-game btn-outline" style="padding: 8px 20px; font-size:0.95rem; border-radius:30px; width:auto;">看更多介紹</span>
-                    </a>
-                </article>
-                <article class="r-book-card">
-                    <a href="https://cptw.com.tw/book/08040267" target="_blank" rel="noopener noreferrer" class="r-book-card-link" aria-label="前往購買旅途上書籍">
-                        <img src="images/book-03.webp" alt="旅途上：公路文學的經典創始作" onerror="this.src='https://d1i8d984en2aby.cloudfront.net/products/2025/7819/conversions/01K0X72VZWHEXRYQ520A3PPJ24-product_preview.webp'">
-                        <h4>旅途上：公路文學的經典創始作</h4>
-                        <p>傑克·凱魯亞克代表作，「垮掉的一代」傳世經典。這本書定義了一個世代的叛逆與渴望，帶領讀者橫越美國大陸，在爵士樂與無盡的公路中，尋找靈魂的解放。</p>
+                    <a href="https://cptw.com.tw/book/08040270" target="_blank" rel="noopener noreferrer" class="r-book-card-link" aria-label="前往購買托斯卡尼豔陽下書籍">
+                        <img src="images/book-03.webp" alt="托斯卡尼豔陽下" onerror="this.style.display='none'">
+                        <h4>托斯卡尼豔陽下</h4>
+                        <p>雋永經典暢銷散文，記錄在義大利托斯卡尼修繕老屋、品味美食與擁抱自然的美好時光。一場療癒身心的異國之旅，帶你感受純粹的生活美學與找回靈魂的悠閒步調。</p>
                         <span class="btn-game btn-outline" style="padding: 8px 20px; font-size:0.95rem; border-radius:30px; width:auto;">看更多介紹</span>
                     </a>
                 </article>
@@ -558,7 +551,6 @@
             <h3 class="section-title" style="font-size: 1.4rem; margin-top: 50px;">追蹤臺灣商務印書館</h3>
             <p style="color:var(--text-sub); margin-bottom: 20px;">看看最新的好書精華短影音：</p>
             
-            <!-- FB Reels 嵌入區塊 -->
             <div class="fb-reels-container">
                 <div class="fb-reel-wrapper">
                     <div class="fb-reel">
@@ -582,24 +574,23 @@
         </section>
     </main>
 
-    <!-- 頁腳 -->
     <footer aria-label="頁尾資訊">
         <a href="https://cptw.com.tw/" target="_blank" rel="noopener noreferrer">
             <img src="images/logo-2.webp" alt="臺灣商務印書館" style="height:40px; margin-bottom:15px;" onerror="this.style.display='none'">
         </a>
         <div class="footer-social">
-            <a href="https://www.facebook.com/ecptw/reels/" target="_blank" rel="noopener noreferrer" aria-label="前往 Facebook 粉絲專頁"><img src="images/facebook.webp" alt="" onerror="this.src='https://cdn-icons-png.flaticon.com/512/124/124010.png'"></a>
-            <a href="https://www.youtube.com/@InBook_1897" target="_blank" rel="noopener noreferrer" aria-label="前往 YouTube 頻道"><img src="images/youtube.webp" alt="" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1384/1384060.png'"></a>
-            <a href="https://page.line.me/sbe1949f?openQrModal=true" target="_blank" rel="noopener noreferrer" aria-label="加入 LINE 官方帳號"><img src="images/line.webp" alt="" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg'"></a>
-            <a href="https://www.instagram.com/commercial.press.tw" target="_blank" rel="noopener noreferrer" aria-label="前往 Instagram"><img src="images/ig.webp" alt="" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2111/2111463.png'"></a>
-            <a href="https://www.threads.com/@commercial.press.tw" target="_blank" rel="noopener noreferrer" aria-label="前往 Threads"><img src="images/threads.webp" alt="" onerror="this.src='https://seeklogo.com/images/T/threads-logo-E9BA734BF6-seeklogo.com.png?v=638252100950000000'"></a>
+            <a href="https://www.facebook.com/ecptw/reels/" target="_blank" rel="noopener noreferrer" aria-label="前往 Facebook 粉絲專頁"><img src="images/facebook.webp" alt="臺灣商務印書館" onerror="this.src='https://cdn-icons-png.flaticon.com/512/124/124010.png'"></a>
+            <a href="https://www.youtube.com/@InBook_1897" target="_blank" rel="noopener noreferrer" aria-label="前往 YouTube 頻道"><img src="images/youtube.webp" alt="有何Book" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1384/1384060.png'"></a>
+            <a href="https://page.line.me/sbe1949f?openQrModal=true" target="_blank" rel="noopener noreferrer" aria-label="加入 LINE 官方帳號"><img src="images/line.webp" alt="臺灣商務印書館" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg'"></a>
+            <a href="https://www.instagram.com/commercial.press.tw" target="_blank" rel="noopener noreferrer" aria-label="前往 Instagram"><img src="images/ig.webp" alt="臺灣商務印書館" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2111/2111463.png'"></a>
+            <a href="https://www.threads.com/@commercial.press.tw" target="_blank" rel="noopener noreferrer" aria-label="前往 Threads"><img src="images/threads.webp" alt="臺灣商務印書館" onerror="this.src='https://seeklogo.com/images/T/threads-logo-E9BA734BF6-seeklogo.com.png?v=638252100950000000'"></a>
         </div>
         <p style="color:var(--text-sub); font-size:0.9rem;">版權所有 © 2026 臺灣商務印書館 Commercial Press (Taiwan). All Rights Reserved.</p>
         <p style="margin-top: 10px; color: var(--accent-blue); font-weight:bold;">「世界越快，心越慢。」</p>
     </footer>
 
     <script>
-        // 1. 打字機特效 (安全防疊加版本)
+
         let isTyping = false;
         function typeWriterHTML(elementId, text, speed) {
             const elem = document.getElementById(elementId);
@@ -633,34 +624,31 @@
             isTyping = true;
             let quoteText = "一個成熟的社會，不只是持續運轉，<br>而是讓人有時間去思考、去愛、去遊戲，也去創造。<br>羅素的「悠閒哲學」，重新思索工作、努力與幸福。";
             
-            // 中英文同時平行打字
             typeWriterHTML('typewriter-quote', quoteText, 60);
             typeWriterHTML('typewriter-eng', 'In Praise of Idleness and Other Essays', 40);
         });
 
-        // 2. 大字模式
         let isLarge = false;
         function toggleFontSize() {
             isLarge = !isLarge;
             document.documentElement.classList.toggle('large-text', isLarge);
             const btn = document.getElementById('fontSizeBtn');
             if (isLarge) {
-                btn.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/128/16799/16799322.png" class="nav-icon" alt="" aria-hidden="true"><span class="nav-text"> 恢復字體</span>';
+                btn.innerText = '還原';
                 btn.classList.remove('outline');
             } else {
-                btn.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/128/16799/16799322.png" class="nav-icon" alt="" aria-hidden="true"><span class="nav-text"> 大字模式</span>';
+                btn.innerText = '放大';
                 btn.classList.add('outline');
             }
         }
 
-        // 3. 心理測驗 (含無障礙 aria-pressed 同步)
         let answers = {q1:0, q2:0, q3:0, q4:0, q5:0};
         function selOpt(q, a, el) {
             answers[q] = a;
             let parent = el.parentElement;
             parent.querySelectorAll('.quiz-option-card').forEach(c => {
                 c.classList.remove('selected');
-                c.setAttribute('aria-pressed', 'false'); // a11y 狀態更新
+                c.setAttribute('aria-pressed', 'false');
             });
             el.classList.add('selected');
             el.setAttribute('aria-pressed', 'true');
@@ -675,31 +663,98 @@
             let res = document.getElementById('quiz-result');
             res.classList.remove('hidden');
             if(scoreA >= 4){
-                document.getElementById('res-title').innerHTML = "<span style='color:#e11d48'>🚨 重度制約的現代邁達斯王</span>";
+                document.getElementById('res-title').innerHTML = "<span style='color:#e11d48'>重度制約的現代邁達斯王</span>";
                 document.getElementById('res-desc').innerText = "你被金錢與效率徹底控制了生活！連休息都帶著罪惡感。";
                 document.getElementById('res-quote').innerText = "羅素處方箋：現代人把閒暇看作浪費，但閒暇對思考與幸福非常重要。";
             } else if(scoreA >= 2) {
-                document.getElementById('res-title').innerHTML = "<span style='color:#ea580c'>⚖️ 徘徊焦慮邊緣的現代人</span>";
+                document.getElementById('res-title').innerHTML = "<span style='color:#ea580c'>徘徊焦慮邊緣的現代人</span>";
                 document.getElementById('res-desc').innerText = "你卡在理想的悠閒與現實的競爭之間。";
                 document.getElementById('res-quote').innerText = "羅素處方箋：為無用的事物保留空間，找回分寸感。";
             } else {
-                document.getElementById('res-title').innerHTML = "<span style='color:#10b981'>🧘‍♂️ 傲視焦慮的悠閒哲學家</span>";
+                document.getElementById('res-title').innerHTML = "<span style='color:#10b981'>傲視焦慮的悠閒哲學家</span>";
                 document.getElementById('res-desc').innerText = "恭喜你！你懂得享受那些看似「無用」卻能滋養靈魂的事物。";
                 document.getElementById('res-quote').innerText = "羅素處方箋：真正成熟的社會，應該留時間給思考、愛與遊戲。你就是本書的知音！";
             }
             res.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        // 4. 社群分享 API
-        function shareSocial(platform, status) {
-            let text = status === 'win' 
-                ? "🏆【奇蹟通關】我成功捍衛了精神自由！快來測測你的過勞指數，領取《悠閒頌》特惠碼 000000！" 
-                : "❌【過勞警報】我的靈魂被工作火化了……羅素說得對，我們都忘了生活的意義。來測測你的過勞指數！";
-            let url = encodeURIComponent(window.location.href);
+
+        function endGame(isWin) {
+            gameState = isWin ? 'WIN' : 'LOSE';
+            
+            let title = "", desc = "", imgSrc = "";
+            
+            if (isWin || surviveTime >= 20.0) {
+                title = "<span style='color:var(--accent-green)'>傲視焦慮的悠閒哲學家</span>";
+                desc = "奇蹟生還！你完美閃避了工作海嘯，成功奪回屬於自己的精神自由！";
+                imgSrc = "images/game_05.png";
+            } else if (surviveTime < 5.0) {
+                title = "<span style='color:var(--accent-red)'>盲信美德的過勞者</span>";
+                desc = "開局秒殺！你的靈魂瞬間被工作海嘯吞噬，連喘息的機會都沒有。";
+                imgSrc = "images/game_01.png";
+            } else if (surviveTime < 10.0) {
+                title = "<span style='color:var(--accent-orange)'>毫無靈魂的加班機器</span>";
+                desc = "你努力想逃離，但終究敵不過社會毒打，被迫回去當個毫無靈魂的加班機器！";
+                imgSrc = "images/game_02.png";
+            } else if (surviveTime < 15.0) {
+                title = "<span style='color:var(--accent-blue)'>焦慮邊緣的功利主義者</span>";
+                desc = "撐過了一半！但你還是忍不住把時間塞滿，掉進了『凡事都必須有用』的陷阱裡。";
+                imgSrc = "images/game_03.png";
+            } else {
+                title = "<span style='color:#8b5cf6'>觸摸自由的修行者</span>";
+                desc = "就差一點點！你已經看見了自由的微光，卻在最後一刻向無謂的忙碌妥協了。";
+                imgSrc = "images/game_04.png";
+            }
+
+            document.getElementById('result-title').innerHTML = title;
+            document.getElementById('result-desc').innerText = desc;
+            
+            let resImg = document.getElementById('result-img');
+            resImg.src = imgSrc;
+            resImg.onerror = function() {
+                if(this.src.endsWith('.png')) this.src = this.src.replace('.png', '.webp');
+                else if(this.src.endsWith('.webp')) this.src = this.src.replace('.webp', '.jpg');
+                else this.style.display = 'none';
+            };
+
+            window.gameShareData = { 
+                title: title.replace(/<[^>]+>/g, ''), 
+                desc: desc 
+            };
+
+            document.getElementById('screen-result').classList.remove('hidden');
+        }
+
+        function shareSocial(platform) {
+            let data = window.gameShareData || { title: '測驗結果', desc: '快來玩自由靈魂生存戰！' };
+            let text = `我的生存戰結果：【${data.title}】\n${data.desc}\n你也來測測看！`;
+            let url = window.location.href;
+
+            if (navigator.share && /Mobi|Android/i.test(navigator.userAgent)) {
+                navigator.share({
+                    title: '自由靈魂生存戰',
+                    text: text,
+                    url: url
+                }).catch(err => {
+                    if (err.name !== 'AbortError') console.error(err);
+                });
+                return;
+            }
+
             let shareUrl = "";
-            if(platform === 'fb') shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${encodeURIComponent(text)}`;
-            else if (platform === 'line') shareUrl = `https://social-plugins.line.me/lineit/share?url=${url}&text=${encodeURIComponent(text)}`;
-            window.open(shareUrl, '_blank', 'width=600,height=500');
+            if (platform === 'fb') {
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`;
+                window.open(shareUrl, '_blank', 'width=600,height=500');
+            } else if (platform === 'line') {
+                shareUrl = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+                window.open(shareUrl, '_blank', 'width=600,height=500');
+            } else if (platform === 'ig' || platform === 'threads') {
+                navigator.clipboard.writeText(`${text}\n${url}`).then(() => {
+                    alert("✅ 已將您的測驗結果複製到剪貼簿！\n請直接開啟 App 貼上分享。");
+                }).catch(() => {
+                    alert("請手動複製網址分享！");
+                });
+            }
         }
 
 
@@ -715,33 +770,74 @@
         const player = { x: 250, y: 550, r: 20, c: '#0284c7', pulse: 0, flash: 0 };
         let obs = [], texts = [];
         const icons = ['📅','📞','✉️','📊'];
-        let tX=0, tY=0, pX=0, pY=0;
-        let animationId; 
+        
+        let touchStartX = 0, touchStartY = 0;
+        let playerStartX = 0, playerStartY = 0;
+        
+        let animationId;
 
-        function getScale() { const r = canvas.getBoundingClientRect(); return { x: canvas.width/r.width, y: canvas.height/r.height }; }
-        function handleMove(cx, cy) {
-            if (gameState !== 'PLAYING') return;
-            const s = getScale();
-            player.x = Math.max(player.r, Math.min(canvas.width - player.r, (cx - canvas.getBoundingClientRect().left) * s.x));
-            player.y = Math.max(player.r, Math.min(canvas.height - player.r, (cy - canvas.getBoundingClientRect().top) * s.y));
+        const DPR = window.devicePixelRatio || 1;
+        const CANVAS_W = 500, CANVAS_H = 700;
+        canvas.width = CANVAS_W * DPR;
+        canvas.height = CANVAS_H * DPR;
+        canvas.style.width = CANVAS_W + 'px';
+        canvas.style.height = CANVAS_H + 'px';
+        ctx.scale(DPR, DPR);
+
+        function getCanvasCoords(clientX, clientY) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = CANVAS_W / rect.width;
+            const scaleY = CANVAS_H / rect.height;
+            return {
+                x: (clientX - rect.left) * scaleX,
+                y: (clientY - rect.top) * scaleY
+            };
         }
+
+        function handleMove(clientX, clientY) {
+            if (gameState !== 'PLAYING') return;
+            const { x, y } = getCanvasCoords(clientX, clientY);
+            player.x = Math.max(player.r, Math.min(CANVAS_W - player.r, x));
+            player.y = Math.max(player.r, Math.min(CANVAS_H - player.r, y));
+        }
+
         canvas.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
-        canvas.addEventListener('touchstart', (e) => { if(gameState==='PLAYING'){ tX=e.touches[0].clientX; tY=e.touches[0].clientY; pX=player.x; pY=player.y; } }, {passive: true});
+        
+        canvas.addEventListener('touchstart', (e) => {
+            if (gameState !== 'PLAYING') return;
+            const touch = e.touches[0];
+            if (!touch) return;
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+            playerStartX = player.x;
+            playerStartY = player.y;
+        }, { passive: true });
+
         canvas.addEventListener('touchmove', (e) => {
-            if(gameState!=='PLAYING') return; e.preventDefault();
-            const s = getScale();
-            player.x = Math.max(player.r, Math.min(canvas.width-player.r, pX + (e.touches[0].clientX-tX)*s.x));
-            player.y = Math.max(player.r, Math.min(canvas.height-player.r, pY + (e.touches[0].clientY-tY)*s.y));
+            if (gameState !== 'PLAYING') return;
+            e.preventDefault(); 
+            const touch = e.touches[0];
+            if (!touch) return;
+            
+            const deltaX = (touch.clientX - touchStartX);
+            const deltaY = (touch.clientY - touchStartY);
+            
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = CANVAS_W / rect.width;
+            const scaleY = CANVAS_H / rect.height;
+            
+            let newX = playerStartX + deltaX * scaleX;
+            let newY = playerStartY + deltaY * scaleY;
+            
+            player.x = Math.max(player.r, Math.min(CANVAS_W - player.r, newX));
+            player.y = Math.max(player.r, Math.min(CANVAS_H - player.r, newY));
         }, { passive: false });
 
         function startGame() {
-            // 防呆：重置 RequestAnimationFrame 確保不疊加
-            if(animationId) {
-                cancelAnimationFrame(animationId); 
-            }
+            if(animationId) cancelAnimationFrame(animationId); 
             obs = []; texts = [];
             surviveTime = 0.0; overworkLevel = 0.0; gameState = 'PLAYING';
-            player.x = canvas.width/2; player.y = canvas.height*0.8; player.flash = 0;
+            player.x = CANVAS_W/2; player.y = CANVAS_H * 0.8; player.flash = 0;
             lastTime = performance.now(); spawnTimer = 0; coinTimer = 0;
             document.getElementById('canvas-container').classList.remove('danger-border');
             document.querySelectorAll('.game-overlay').forEach(el => el.classList.add('hidden'));
@@ -761,7 +857,7 @@
             const dt = now - lastTime; lastTime = now;
             
             surviveTime += dt / 1000;
-            if (surviveTime >= 20.0) { surviveTime = 20.0; gameState = 'WIN'; document.getElementById('screen-win').classList.remove('hidden'); return; }
+            if (surviveTime >= 20.0) { surviveTime = 20.0; endGame(true); return; }
 
             let p = 1, inv = 550;
             if (surviveTime > 8 && surviveTime <= 15) { p = 2; inv = 450; } 
@@ -770,15 +866,15 @@
             spawnTimer += dt;
             if (spawnTimer >= inv) {
                 if (p===3 && Math.random()>0.5) {
-                    obs.push({x:Math.random()*canvas.width, y:-40, vx:(Math.random()-0.5)*2, vy:Math.random()*2+5, t:'💬', type:'hell', s:24});
+                    obs.push({x:Math.random()*CANVAS_W, y:-40, vx:(Math.random()-0.5)*2, vy:Math.random()*2+5, t:'💬', type:'hell', s:24});
                 } else {
-                    obs.push({x:Math.random()*(canvas.width-60)+30, y:-40, vx:(p===2)?(Math.random()-0.5)*3:0, vy:Math.random()*2+3+p*0.5, t:icons[Math.floor(Math.random()*icons.length)], type:'w', s:22});
+                    obs.push({x:Math.random()*(CANVAS_W-60)+30, y:-40, vx:(p===2)?(Math.random()-0.5)*3:0, vy:Math.random()*2+3+p*0.5, t:icons[Math.floor(Math.random()*icons.length)], type:'w', s:22});
                 }
                 spawnTimer = 0;
             }
-            coinTimer+=dt; if(coinTimer>=2200){ if(Math.random()>0.3) obs.push({x:Math.random()*(canvas.width-60)+30, y:-40, vx:0, vy:Math.random()*2+3, t:'🪙', type:'coin', s:22}); coinTimer=0; }
+            coinTimer+=dt; if(coinTimer>=2200){ if(Math.random()>0.3) obs.push({x:Math.random()*(CANVAS_W-60)+30, y:-40, vx:0, vy:Math.random()*2+3, t:'🪙', type:'coin', s:22}); coinTimer=0; }
 
-            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.clearRect(0,0,CANVAS_W,CANVAS_H);
 
             for (let i=obs.length-1; i>=0; i--) {
                 let o=obs[i]; o.x+=o.vx; o.y+=o.vy;
@@ -795,13 +891,12 @@
                         overworkLevel += 2.5; player.flash=12; 
                         texts.push({t:'+2.5h 疲勞',c:'#e11d48',y:160,l:1.5}); obs.splice(i,1); 
                         if(overworkLevel >= maxOverwork) { 
-                            document.getElementById('lose-reason').innerText = `過勞指數爆表，無法繼續工作！`;
-                            gameState='LOSE'; document.getElementById('screen-lose').classList.remove('hidden'); return; 
+                            endGame(false); return; 
                         }
                     }
                     continue;
                 }
-                if(o.y>canvas.height+50) obs.splice(i,1);
+                if(o.y>CANVAS_H+50) obs.splice(i,1);
             }
 
             player.pulse+=0.1; ctx.save();
@@ -809,20 +904,50 @@
             else { ctx.globalAlpha=0.8+Math.abs(Math.sin(player.pulse))*0.2; ctx.fillStyle=player.c; ctx.shadowColor=player.c; }
             ctx.shadowBlur=15; ctx.beginPath(); ctx.arc(player.x,player.y,player.r,0,Math.PI*2); ctx.fill(); ctx.restore();
 
-            ctx.fillStyle='rgba(255,255,255,0.95)'; ctx.fillRect(0,0,canvas.width,85);
-            ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(0,85); ctx.lineTo(canvas.width,85); ctx.stroke();
+            ctx.fillStyle='rgba(255,255,255,0.95)'; ctx.fillRect(0,0,CANVAS_W,85);
+            ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(0,85); ctx.lineTo(CANVAS_W,85); ctx.stroke();
             
-            const bW=canvas.width-60, bH=18, bX=30, bY=15, pr=Math.min(1, overworkLevel/maxOverwork);
-            ctx.fillStyle='#e2e8f0'; ctx.beginPath(); ctx.roundRect(bX,bY,bW,bH,8); ctx.fill();
-            ctx.fillStyle = pr > 0.8 ? '#e11d48' : (pr > 0.5 ? '#f59e0b' : '#10b981'); 
-            ctx.beginPath(); ctx.roundRect(bX,bY,bW*pr,bH,8); ctx.fill();
+            const bW=CANVAS_W-60, bH=18, bX=30, bY=15, pr=Math.min(1, overworkLevel/maxOverwork);
+            ctx.fillStyle='#e2e8f0'; 
+            
+            // 繪製背景底條
+            ctx.beginPath();
+            ctx.moveTo(bX+8, bY);
+            ctx.lineTo(bX+bW-8, bY);
+            ctx.quadraticCurveTo(bX+bW, bY, bX+bW, bY+8);
+            ctx.lineTo(bX+bW, bY+bH-8);
+            ctx.quadraticCurveTo(bX+bW, bY+bH, bX+bW-8, bY+bH);
+            ctx.lineTo(bX+8, bY+bH);
+            ctx.quadraticCurveTo(bX, bY+bH, bX, bY+bH-8);
+            ctx.lineTo(bX, bY+8);
+            ctx.quadraticCurveTo(bX, bY, bX+8, bY);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.fillStyle = pr > 0.8 ? '#e11d48' : (pr > 0.5 ? '#f59e0b' : '#10b981');
+            const w2 = bW * pr;
+            if (w2 > 0) {
+                ctx.beginPath();
+                let radius = Math.min(8, w2 / 2); 
+                ctx.moveTo(bX + radius, bY);
+                ctx.lineTo(bX + w2 - radius, bY);
+                ctx.quadraticCurveTo(bX + w2, bY, bX + w2, bY + radius);
+                ctx.lineTo(bX + w2, bY + bH - radius);
+                ctx.quadraticCurveTo(bX + w2, bY + bH, bX + w2 - radius, bY + bH);
+                ctx.lineTo(bX + radius, bY + bH);
+                ctx.quadraticCurveTo(bX, bY + bH, bX, bY + bH - radius);
+                ctx.lineTo(bX, bY + radius);
+                ctx.quadraticCurveTo(bX, bY, bX + radius, bY);
+                ctx.closePath();
+                ctx.fill();
+            }
             
             ctx.fillStyle='#1e293b'; ctx.font='bold 18px sans-serif'; ctx.textAlign='center';
-            ctx.fillText(`時間: ${surviveTime.toFixed(1)}s / 20s | 過勞: ${(pr*100).toFixed(0)}%`, canvas.width/2, bY+bH+25);
+            ctx.fillText(`時間: ${surviveTime.toFixed(1)}s / 20s | 過勞: ${(pr*100).toFixed(0)}%`, CANVAS_W/2, bY+bH+25);
 
             for (let i=texts.length-1; i>=0; i--) {
                 let ft=texts[i]; ft.l-=0.03; if(ft.l<=0){ texts.splice(i,1); continue; }
-                ctx.globalAlpha=ft.l; ctx.fillStyle=ft.c; ctx.font='bold 24px sans-serif'; ctx.shadowColor='#fff'; ctx.shadowBlur=4; ctx.fillText(ft.t,canvas.width/2,ft.y);
+                ctx.globalAlpha=ft.l; ctx.fillStyle=ft.c; ctx.font='bold 24px sans-serif'; ctx.shadowColor='#fff'; ctx.shadowBlur=4; ctx.fillText(ft.t,CANVAS_W/2,ft.y);
             }
             ctx.globalAlpha = 1;
             animationId = requestAnimationFrame(gameLoop);
